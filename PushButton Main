@@ -1,0 +1,23 @@
+/* main file 
+ This code is a PB classwith a built-in debounce. 
+ It uses an internal resistor .
+ It uses the isPressed() method that checks the state of the PB.
+ It does not use delay. The main theme is the isPressed method. 
+*/
+#include "PushButton.h"// Include the PushButton class header
+
+const int BUTTON_PIN = 2;// The pin number of PB
+const unsigned long DEBOUNCE_DELAY = 50;// The debounce delay time 
+
+PushButton button(BUTTON_PIN, DEBOUNCE_DELAY);// Create a PushButton object
+
+void setup() {
+  Serial.begin(9600);// Initialize the serial communication
+  button.init(); // Initialize the button pin
+}
+
+void loop() {
+  if (button.isPressed()) {// If the PB is pressed
+    Serial.println("Push Button is pressed");// Print on the serial monitor
+  }
+}
