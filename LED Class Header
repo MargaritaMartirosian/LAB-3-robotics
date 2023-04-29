@@ -1,0 +1,22 @@
+// Header file 
+#ifndef LED_H // prevent multiple definitions of the Led class header
+#define LED_H //If LED_H has not been defined then the header file is defined and included.
+#include<Arduino.h>;  // provides definitions for standard Arduino functions and types
+ 
+class Led{
+
+private:
+int _pin;//private data member 
+
+public:  // public members 
+Led(){}        // The default constructor 
+Led( int pin); // The constructor 
+
+void init();   // to intialize the pin as output
+void on();     // to turn the Led on
+void off();    // to turn the Led off 
+
+  
+};
+
+ #endif // closes the header file definition
