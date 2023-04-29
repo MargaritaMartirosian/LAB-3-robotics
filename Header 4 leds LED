@@ -1,0 +1,20 @@
+// HEADER for Led class 
+// Include guard to prevent multiple inclusion of the same header file
+#ifndef LED_H
+#define LED_H
+
+#include <Arduino.h>// Include Arduino.h library for using Arduino functions and macros
+
+class Led {// Declare a class called Led
+private:// Private members of the class
+  int _pin[4];
+  int _index;
+
+public:// Public members of the class
+  Led(int pin[]);// Constructor to initialize the LED pins
+  void displayCount(int count);// Method to display the LED count
+};
+
+#endif// End of the include guard
+
+
