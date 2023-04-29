@@ -1,0 +1,32 @@
+// cpp file 
+#include "PushButton.h" // Include the class header
+#include "Arduino.h"  // Include the Arduino library
+
+PushButton::PushButton(int pin, unsigned long debounceDelay) {
+  // defines the constructor of the PB class that takes a pin number and debounce delay arguments
+  this->pin = pin;// Set the pin number
+  this->debounceDelay = debounceDelay;// Set the debounce delay
+  this->lastState = false; // Initialize the last state to false
+}
+//-------------------------------------DEBOUNCE-----------------------------------------
+void PushButton::init() {
+  pinMode(pin, INPUT_PULLUP);// Set the pin as an input with a pull-up resistor (Internal)
+}
+bool PushButton::isPressed() { // indicates if PB is pressed or not 
+  bool reading = digitalRead(pin); // Read the current state of the button
+
+  if (reading != lastState) {// If the current state is different from the last state
+    lastDebounceTime = millis();// Update the last debounce time to the current time
+  }
+  if ((millis() - lastDebounceTime) > debounceDelay) {// If the debounce delay has passed
+    if (reading != currentState) {// If the current state is different from the stored state
+      currentState = reading;// Update the stored state to the current state
+
+      if (currentState == LOW) {// If the button is pressed 
+        return true;// Return true to indicate that the button is pressed
+      }}
+    }
+  lastState = reading; // Store the current state as the last state
+  return false;// Return false to indicate that the button is not pressed
+}
+
