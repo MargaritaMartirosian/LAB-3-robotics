@@ -1,0 +1,20 @@
+// Header file 
+#ifndef PUSHBUTTON_H // Include guard to prevent multiple definitions of the class
+#define PUSHBUTTON_H
+
+class PushButton {
+  private:
+    int pin; // The pin number of the button
+    bool currentState; // The current state of the button
+    bool lastState;// The last state of the button
+    unsigned long lastDebounceTime;// The time of the last debounce
+    unsigned long debounceDelay; // The debounce delay in milliseconds
+
+  public:
+    PushButton(int pin, unsigned long debounceDelay); // Constructor
+    void init();// Method to initialize the button pin
+    bool isPressed();// Method to check if the button is pressed
+};
+
+#endif
+
