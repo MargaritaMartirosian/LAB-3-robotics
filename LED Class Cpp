@@ -1,0 +1,25 @@
+ // cpp file 
+ 
+ #include "LED.h"  //includes a header file named "LED.h"
+                 
+
+
+Led:: Led(int pin){ // constructor for Led class
+                    // function assigns the pin parameter to the _pin data member of the Led object
+  _pin = pin;
+}
+
+void Led::init(){ //method to initialize 
+  pinMode (_pin, OUTPUT); // Led is an output 
+
+ 
+}
+
+void Led::on(){ // methode used to turn ON the Led
+  digitalWrite(_pin,1);
+  
+}
+void Led::off(){// methode used to turn OFF the Led
+  digitalWrite(_pin,0);
+  
+}
