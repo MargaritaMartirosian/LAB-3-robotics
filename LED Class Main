@@ -1,0 +1,19 @@
+// Main file 
+// Code is used to make an LED blink using classes. 
+#include "LED.h" //includes a header file named LED.h
+
+Led no(13); //creates an instance of the Led class, pin 13
+
+void setup() { // code runs once
+  
+  no.init(); //initializes the no instance of the Led class by calling its init() method
+}
+
+void loop(){ // code runs in a loop
+  
+no.on();  // turns the LED on by calling the on() method
+delay(1000); 
+no.off(); // turns the LED off using the off() method
+delay(200);
+}
+  
