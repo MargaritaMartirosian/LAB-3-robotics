@@ -1,0 +1,25 @@
+// HEADER for PushButton class
+#ifndef PUSHBUTTON_H
+#define PUSHBUTTON_H
+
+#include <Arduino.h>
+
+class PushButton {
+  private:                 // private members 
+    int pin;               // The pin number for the push button
+    int _lastState = HIGH; // The previous state of the button
+    int _state;            // The current state of the button
+    unsigned long _lastDebounceTime = 0;// The last time the button was debounced
+    unsigned long _debounceDelay = 50;  // The delay time for debouncing the button
+    int count = 0;         // The current count of button presses
+
+  public: // public members
+    PushButton(){}      // The current count of button presses
+    PushButton(int pin);// Constructor that takes a pin number as argument
+
+    void init();   // Initializes the push button
+    void state();  // Checks the current state of the push button
+    int getCount();// Returns the current count of button presses
+};
+
+#endif
