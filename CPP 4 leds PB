@@ -1,0 +1,35 @@
+// CPP for PushButton
+#include "PushButton.h"
+
+PushButton::PushButton(int pin) {
+  this->pin = pin;               // Assigns the input pin to the class variable
+}
+void PushButton::init() {
+  pinMode(pin, INPUT_PULLUP);    // Configures the input pin as a pull-up input
+  Serial.begin(9600);            // Initializes the serial communication with a baud rate of 9600
+}
+void PushButton::state() {
+  int val = digitalRead(pin);    // Reads the current state of the input pin
+ 
+  if (val != _lastState) {       // Checks if the current state is different from the previous state
+    _lastDebounceTime = millis();// Updates the debounce time to the current time
+  }
+  if ((millis() - _lastDebounceTime) > _debounceDelay) {  // Checks if the debounce time has passed
+    if (val != _state) { // Checks if the current state is different from the saved state
+      _state = val;      // Saves the current state
+
+      if (_state == LOW) {// Checks if the button is pressed (LOW state)
+        count++;// Increments the count variable
+      }
+    } }
+  _lastState = val;       // Saves the current state as the previous state for the next loop
+}
+
+int PushButton::getCount() {
+  if (count > 4) { // Checks if the count variable is greater than 4
+    count = 0;     // Resets the count variable to 0
+  }
+  return count;     // Returns the count variable
+}
+
+
