@@ -1,0 +1,21 @@
+// CPP for Led class
+#include "LED.h"                     // Include the header file for the Led class
+
+Led::Led(int pin[]) {                // Define the constructor for the Led class that takes an array of integers as an argument
+  for (int i = 0; i < 4; i++) {      // Loop through the array of pins and set each pin as an output
+    _pin[i] = pin[i];                // Store the pin number in the _pin array
+    pinMode(_pin[i], OUTPUT);        // Set the pin as an output
+  }
+  _index = 0;                        // Set the initial index of the LED that is turned on to 0
+  digitalWrite(_pin[_index], HIGH);  // Turn on the LED corresponding to the initial index
+}
+void Led::displayCount(int count) {  // Define the method that displays the LED count
+
+  for (int i = 0; i < 4; i++) {      // Loop through the _pin array and turn off each LED
+    digitalWrite(_pin[i], LOW);      // Turn off the LED
+  }
+
+
+  digitalWrite(_pin[(count-1)%4], HIGH); // Turn on the LED corresponding to the count
+}
+
